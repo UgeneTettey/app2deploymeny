@@ -23,6 +23,36 @@ input_df = None
 required_columns = ['ID', 'Age', 'Income', 'Home', 'Emp_Length', 'Intent', 'Amount', 'Rate', 'Status', 
                     'Percent_Income', 'Default', 'Cred_Length']
 
+# Define the mapping dictionary
+mapping_dict = {
+    'Home': {
+        'OWN': 0,
+        'RENT': 1,
+        'MORTGAGE': 2,
+        'OTHER': 3
+    },
+    'Intent': {
+        'PERSONAL': 0,
+        'EDUCATION': 1,
+        'MEDICAL': 2,
+        'VENTURE': 3,
+        'HOMEIMPROVEMENT': 4,
+        'DEBTCONSOLIDATION': 5
+    }
+}
+
+# Function to map categorical features
+def map_categorical_features(data, mappings):
+    for column, mapping in mappings.items():
+        if column in data.columns:
+            try:
+                data[column] = data[column].replace(mapping)
+            except Exception as e:
+                st.error(f"An error occurred when mapping column '{column}': {e}")
+        else:
+            st.warning(f"The column '{column}' is not found in the DataFrame")
+    return data
+
 if input_method == "Upload CSV/Excel":
     # File upload form for CSV/Excel files
     uploaded_file = st.file_uploader("Upload CSV or Excel file", type=["csv", "xlsx"])
