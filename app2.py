@@ -93,9 +93,9 @@ def preprocess_input(input_data, is_manual=True):
     input_df = pd.DataFrame([input_data]) if is_manual else input_data
     input_df = input_df.reindex(columns=required_columns, fill_value=0)
 
-    # # Scaling the input data
-    # input_df_scaled = pd.DataFrame(scaler.fit_transform(input_df), columns=required_columns)
-    # return input_df_scaled
+    # Scaling the input data
+    input_df_scaled = pd.DataFrame(scaler.fit_transform(input_df), columns=required_columns)
+    return input_df_scaled
 
 if input_method == "Upload CSV/Excel" and input_df is not None:
     # Preprocess and predict
@@ -121,16 +121,16 @@ elif input_method == "Manual Input" and submit_manual_button:
     # Collect manual input values
     input_data = {
 
-        'Age' = Age,
-        'Income' = Income,
-        'Home' = Home,
-        'Emp_length' = Emp_length,
-        'Intent' = Intent,
-        'Amount' = Amount,
-        'Rate' = Rate,
-        'Status' = Status,
-        'Percent_income' = Percent_income,
-        'Cred_length' = Cred_length
+        'Age' == Age,
+        'Income' == Income,
+        'Home' == Home,
+        'Emp_length' == Emp_length,
+        'Intent' == Intent,
+        'Amount' == Amount,
+        'Rate' == Rate,
+        'Status' == Status,
+        'Percent_income' == Percent_income,
+        'Cred_length' == Cred_length
     }
 
     # Preprocess the manual input data
