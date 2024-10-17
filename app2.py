@@ -217,7 +217,7 @@ else:
         intent = st.selectbox('Loan Intent', ['Personal','Education', 'Medical', 'Venture', 'Home Improvement', 'Debt Consolidation'])
         amount = st.number_input('Loan Amount', min_value=500, step=500)
         rate = st.number_input('Interest Rate (%)', min_value=0.0, step=0.01)
-        status = st.selectbox('Loan Status', ['Fully Paid', 'Charged Off', 'Current'])
+        # status = st.selectbox('Loan Status', ['Fully Paid', 'Charged Off', 'Current'])
         percent_income = st.number_input('Percent of Income Loan Amount', min_value=0.0, step=0.1)
         cred_length = st.number_input('Credit History Length (years)', min_value=0, max_value=50, step=1)
         
@@ -233,7 +233,7 @@ else:
             'Intent': intent,
             'Amount': amount,
             'Rate': rate,
-            'Status': status,
+            # 'Status': status,
             'Percent_Income': percent_income,
             'Cred_Length': cred_length,
         }
